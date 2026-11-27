@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIM Peminjaman Ruang Kampus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🏫 SIM Peminjaman Ruang Kampus</div>
+    <nav id="nav" class="hidden">
+      <button data-view="booking" class="active">Booking</button>
+      <button data-view="schedule">Jadwal</button>
+      <button data-view="notif">Notifikasi <span id="badge" class="badge hidden">0</span></button>
+      <button id="btnLogout" class="ghost">Keluar</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Dev A: Login -->
+    <section id="view-login" class="view card narrow">
+      <h2>Masuk</h2>
+      <p class="muted">Demo: <b>mahasiswa / 1234</b> atau <b>admin / admin123</b></p>
+      <form id="loginForm">
+        <label>Username <input id="username" required autocomplete="username"></label>
+        <label>Password <input id="password" type="password" required autocomplete="current-password"></label>
+        <p id="loginError" class="error"></p>
+        <button class="primary" type="submit">Masuk</button>
+      </form>
+    </section>
+
+    <!-- Dev B: Form peminjaman -->
+    <section id="view-booking" class="view card hidden">
+      <h2>Form Peminjaman Ruang</h2>
+      <p class="muted" id="welcome"></p>
+      <form id="bookingForm" class="grid">
+        <label>Ruang <select id="room" required></select></label>
+        <label>Tanggal <input id="date" type="date" required></label>
+        <label>Jam Mulai <input id="start" type="time" required></label>
+        <label>Jam Selesai <input id="end" type="time" required></label>
+        <label class="full">Keperluan <input id="purpose" placeholder="Contoh: Rapat HIMA" required maxlength="80"></label>
+        <p id="bookingError" class="error full"></p>
+        <button class="primary full" type="submit">Ajukan Peminjaman</button>
+      </form>
+    </section>
+
+    <!-- Dev C: Validasi jadwal -->
+    <section id="view-schedule" class="view card hidden">
+      <h2>Jadwal Peminjaman</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tanggal</th><th>Ruang</th><th>Waktu</th><th>Peminjam</th><th>Keperluan</th><th></th></tr></thead>
+          <tbody id="scheduleBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Dev D: Notifikasi -->
+    <section id="view-notif" class="view card hidden">
+      <h2>Notifikasi</h2>
+      <button id="btnClearNotif" class="ghost">Hapus semua</button>
+      <ul id="notifList" class="notif-list"></ul>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <footer>Tugas RPL Pertemuan 11 — Workflow Tim Git &amp; GitHub</footer>
+
+  <script src="app.js"></script>
+  <script src="login.js"></script>
+  <script src="schedule.js"></script>
+  <script src="booking.js"></script>
+  <script src="notification.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', App.init);</script>
+</body>
+</html>
